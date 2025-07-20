@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supabase Data Entry</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+    .form-container { margin-bottom: 30px; border: 1px solid #ddd; padding: 15px; border-radius: 5px; }
+    button { padding: 8px 15px; background: #3b82f6; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    button:hover { background: #2563eb; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2; }
+    .tab { overflow: hidden; border: 1px solid #ccc; background-color: #f1f1f1; }
+    .tab button { background-color: inherit; float: left; border: none; outline: none; cursor: pointer; padding: 14px 16px; transition: 0.3s; }
+    .tab button:hover { background-color: #ddd; }
+    .tab button.active { background-color: #ccc; }
+    .tabcontent { display: none; padding: 6px 12px; border: 1px solid #ccc; border-top: none; }
+  </style>
+</head>
+<body>
+  <h1>Supabase Data Entry</h1>
+  
+  <div class="tab">
+    <button class="tablinks active" onclick="openTab(event, 'Region')">Regions</button>
+    <button class="tablinks" onclick="openTab(event, 'Users')">Users</button>
+    <button class="tablinks" onclick="openTab(event, 'Tasks')">Tasks</button>
+    <button class="tablinks" onclick="openTab(event, 'Reports')">Reports</button>
+  </div>
+
+  <div id="Region" class="tabcontent" style="display: block;">
+    <h2>Add New Region</h2>
+    <div class="form-container">
+      <input type="text" id="regionName" placeholder="Region Name">
+      <button onclick="addRegion()">Add Region</button>
+    </div>
+    <h2>Regions List</h2>
+    <div id="regionsList"></div>
+  </div>
+
+  <div id="Users" class="tabcontent">
+    <h2>Add New User</h2>
+    <div class="form-container">
+      <input type="text" id="userName" placeholder="User Name">
+      <input type="number" id="userAge" placeholder="Age">
+      <select id="userRegion"></select>
+      <button onclick="addUser()">Add User</button>
+    </div>
+    <h2>Users List</h2>
+    <div id="usersList"></div>
+  </div>
+
+  <div id="Tasks" class="tabcontent">
+    <h2>Add New Task</h2>
+    <div class="form-container">
+      <input type="text" id="taskTitle" placeholder="Task Title">
+      <select id="taskUser"></select>
+      <button onclick="addTask()">Add Task</button>
+    </div>
+    <h2>Tasks List</h2>
+    <div id="tasksList"></div>
+  </div>
+
+  <div id="Reports" class="tabcontent">
+    <h2>User Report</h2>
+    <div id="userReport"></div>
+  </div>
+
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>
